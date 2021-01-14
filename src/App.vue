@@ -1,6 +1,8 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
+    <router-link to="/">helloword组件</router-link>
+    <router-link to="/work">work组件</router-link>
     <router-view/>
   </div>
 </template>
