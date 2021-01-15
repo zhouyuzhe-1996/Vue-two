@@ -39,6 +39,7 @@ export default {
         .post("/api/login", this.loginform)
         .then((res) => {
           console.log(res);
+          // alert({data.msg})
         });
     },
   },

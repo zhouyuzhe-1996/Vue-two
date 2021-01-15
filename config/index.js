@@ -13,12 +13,19 @@ module.exports = {
     proxyTable: {
       // ***
       '/api':{
-        target:'http://172.20.10.4:3000',
+        target:'http://192.168.31.198:3000',
         changeOrgin:true,//跨域
         pathRewrite:{
-          '^/api':'http://172.20.10.4:3000'//开头匹配
+          '^/api':'http://192.168.31.198:3000'//开头匹配
         }
-      } 
+      },
+      '/dang':{
+        target:'http://192.168.31.67:3030',
+        changeOrgin:true,
+        pathRewrite:{
+          '^/dang':'http://192.168.31.67:3030'
+        }
+      }
     },
 
     // Various Dev Server settings

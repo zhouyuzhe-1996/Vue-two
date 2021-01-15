@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+// import HelloWorld from '@/components/HelloWorld'
 import work from '@/components/work'
 import home from '@/components/home'
 import page from '@/views/page'
 import login from '@/components/login'
+import count from '@/views/count'
 import register from '@/components/register'
 Vue.use(Router)
 
@@ -36,6 +37,10 @@ const router = new Router({
       path:'/register',
       name:'register',
       component:register
+    },{
+      path:'/count',
+      name:'count',
+      component:count
     }
   ]
 })

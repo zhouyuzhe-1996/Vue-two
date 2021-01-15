@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-form
-      :model="register"
+      :model="register" ref="register"
       style="width: 30%; margin: 0 auto"
       label-width="100px"
     >
@@ -13,30 +13,43 @@
         <el-input v-model="register.password" placeholder="请输入密码">
         </el-input>
       </el-form-item>
+      <el-form-item label="昵称">
+        <el-input v-model="register.nick" placeholder="请输入昵称">
+        </el-input>
+      </el-form-item>
+      <el-form-item label="年龄">
+        <el-input v-model="register.age" placeholder="请输入年龄">
+        </el-input>
+      </el-form-item>
+      <el-form-item label="tx">
+        <el-input v-model="register.head_img" placeholder="请输入年龄">
+        </el-input>
+      </el-form-item>
     </el-form>
     <el-row>
-      <el-button type="success" @click="reg">成功按钮</el-button>
+      <el-button type="success" @click="reg()">注册</el-button>
     </el-row>
-    
   </div>
 </template>
 
 <script>
 export default {
     // 反向代理
-
   data() {
     return {
       register: {
         username: "",
         password: "",
+        nick:"",
+        age:"",
+        head_img:""
       },
     };
   },
   methods: {
     reg() {
       this.$http
-        .post("/api/register", this.register)
+        .post("/dang/page/register", this.register)
         .then((res) => {
           console.log(res);
         });
