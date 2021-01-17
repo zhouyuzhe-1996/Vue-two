@@ -1,21 +1,30 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
+import Cookie from 'js-cookie'
 const store = new Vuex.Store({
     state: {
-        num: 100
-    }, 
-    getters:{
-        count(state){
-            return state.num > 110 ? 110:state.num
+        num: 100,
+        token: Cookie.get('token') || '',
+        isSignIn: 0
+    },
+    getters: {
+        count: (state) => {
+            return state.num > 110 ? 110 : state.num
         }
-    }, 
+    },
     mutations: {
-        increment(state,plaod){
-            state.num +=plaod.n
+        changeSigin(state, n) {
+            state.isSignIn = n;
         },
-        mincrement(state,plaod){
-            state.num -=plaod.n
+        setToken(state, val) {
+            state.token = val
+        },
+        increment(state, plaod) {
+            state.num += plaod.n
+        },
+        mincrement(state, plaod) {
+            state.num -= plaod.n
         },
         // increment(state) {
         //     state.num += plaod.n
@@ -24,20 +33,20 @@ const store = new Vuex.Store({
         //     state.num -= plaod.n
         // }
     },
-    actions:{
-        increment(context){
-            setTimeout(()=>{
-                context.commit('increment',{n:3})
-            },1000)
+    actions: {
+        increment(context) {
+            setTimeout(() => {
+                context.commit('increment', { n: 3 })
+            }, 1000)
             context.dispatch('test')
         },
-        mincrement(context){
-            setTimeout(()=>{
-                context.commit('mincrement',{n:3})
-            },1000)
+        mincrement(context) {
+            setTimeout(() => {
+                context.commit('mincrement', { n: 3 })
+            }, 1000)
             context.dispatch('test')
         },
-        test(){
+        test() {
             console.log("你要相信光 盖亚！！！")
         },
     }

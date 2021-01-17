@@ -30,6 +30,7 @@ export default {
     add() {
       // this.num++
       //   this.$store.commit("increment",{n:num,name:"Tom",age:19});
+      // mutations里面的方法提交使用this.$store.commit("方法名")
       this.$store.dispatch("increment");
     },
     adds() {

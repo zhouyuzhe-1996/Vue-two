@@ -13,7 +13,12 @@ Vue.prototype.$http = axios
 // Vue.use(axios,vueAxios)
 Vue.use(ElementUI);
 Vue.config.productionTip = false
-
+// axios拦截请求Bearer token
+axios.interceptors.request.use(config=>{
+  if(store.state.token){
+    config.headers['Authorization'] = 'Bearer $(store.state.token)'
+  }
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

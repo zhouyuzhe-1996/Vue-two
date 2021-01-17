@@ -27,7 +27,7 @@
       </el-form-item>
     </el-form>
     <el-row>
-      <el-button type="success" @click="reg()">注册</el-button>
+      <el-button type="success" @click="reg()">立即注册</el-button>
     </el-row>
   </div>
 </template>
@@ -50,8 +50,12 @@ export default {
     reg() {
       this.$http
         .post("/dang/page/register", this.register)
-        .then((res) => {
+        .then(res => {
           console.log(res);
+          if(res.data.code===0){
+            this.$message.success('注册成功')
+            this.$router.push('/login')
+          }
         });
     },
   },

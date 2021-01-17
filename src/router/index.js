@@ -6,6 +6,7 @@ import home from '@/components/home'
 import page from '@/views/page'
 import login from '@/components/login'
 import count from '@/views/count'
+import userinfo from '@/components/userinfo'
 import register from '@/components/register'
 Vue.use(Router)
 
@@ -41,6 +42,10 @@ const router = new Router({
       path:'/count',
       name:'count',
       component:count
+    },{
+      path:'/userinfo',
+      name:'userinfo',
+      component:userinfo
     }
   ]
 })

@@ -17,13 +17,13 @@
     <el-row>
       <el-button type="success" @click="login">成功按钮</el-button>
     </el-row>
-    
   </div>
 </template>
 
 <script>
+import Cookie from 'js-colie'
 export default {
-    // 反向代理
+  // 反向代理
 
   data() {
     return {
@@ -35,12 +35,19 @@ export default {
   },
   methods: {
     login() {
-      this.$http
-        .post("/api/login", this.loginform)
-        .then((res) => {
-          console.log(res);
-          // alert({data.msg})
-        });
+      this.$http.post("/api/login", this.loginform).then((res) => {
+        console.log(res);
+        if (res.data.code === 0) {
+          Cookie.set('token'.res.data.token);
+          Cookie.set('username',this.loginfrom.username);
+          this.$store.commit('setToken',res,data.token);
+          this.$store.commit('changesSignIn',1);
+          this.$message.success('登陆成功');
+
+        }
+
+        // alert({data.msg})
+      });
     },
   },
 };
